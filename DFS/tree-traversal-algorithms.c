@@ -11,6 +11,7 @@ typedef struct Node {
 void inorder_traverse(Node * node);
 void preorder_traverse(Node * node);
 void postorder_traverse(Node * node);
+struct Node * copy_tree(Node * node);
 struct Node * newNode(int data);
 
 
@@ -50,5 +51,15 @@ void postorder_traverse(Node * node) {
 	postorder_traverse(node->left);
 	postorder_traverse(node->right);
 	printf("%i ",node->data);
+}
+
+struct Node *  copy_tree(Node * node){
+	if (node == NULL)
+		return;
+	struct Node * copy = (struct Node*)malloc(sizeof(struct Node));
+	copy->data = node->data;
+	copy->left = copy_tree(node->left);
+	copy->right = copy_tree(node->right);
+	return copy;
 }
 #endif

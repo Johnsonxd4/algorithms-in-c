@@ -13,5 +13,12 @@ int main(){
 	printf("\npost traverse\n");
 	postorder_traverse(node);
 
+
+	struct Node * copy = copy_tree(node);
+
+	printf("\n copy preorder traverse\n");
+	preorder_traverse(copy);
+	printf("\nnode reference: %zx\n", node);
+	printf("copy reference: %zx\n",copy);
 }
 
